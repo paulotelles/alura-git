@@ -7,5 +7,5 @@ inputNome = document.querySelector('[data-nome]');
 
 detalhaCliente(id).then(dados =>{
     inputCPF.value = dados[0].cpf;
-    inputNome.value = dados[0].nome
+    inputNome.value = dados[0].nome;
 })
