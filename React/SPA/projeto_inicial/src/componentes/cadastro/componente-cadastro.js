@@ -15,7 +15,7 @@ const cadastro = `
     <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
     `
-form.innerHTML(cadastro);
+form.innerHTML = cadastro;
 
 const inicializaCadastro = () => {
   const container = document.querySelector('[data-container]');

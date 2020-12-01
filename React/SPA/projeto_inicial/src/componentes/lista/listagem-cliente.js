@@ -29,7 +29,7 @@ tabela.classList.add("table");
 container.appendChild(tabela);
 
 
-const corpoTabela = document.querySelector("tbody");
+const corpoTabela = document.createElement("tbody");
 
 const exibeCliente = (cpf, nome, id) => {
     const linha = document.createElement('tr');
