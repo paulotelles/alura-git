@@ -10,6 +10,18 @@ const removeCliente = (id) => {
   }
 }
 
+const criarBotaoExcluir = (id) => {
+  const botao = document.createElement('button');
+  botao.classList.add('btn', 'btn-danger');
+  botao.innerHTML = "Excluir";
+
+  botao.addEventListener("click", () => {
+    removeCliente(id)
+  })
+  return botao;
+
+}
+
 const criaCorpoTabela = (tabela) => {
   
   const corpoTabela = document.createElement("tbody");
@@ -20,12 +32,11 @@ const criaCorpoTabela = (tabela) => {
     const conteudoLinha = `
     <td>${cpf}</td>
     <td>${nome}</td>
-    <button type="button" class="btn btn-danger" onclick="removeCliente(${id})">Excluir</button>
-    <a href="./componentes/edita/edita-clientes.html?id=${id}">
-    <button type=""button class="btn btn-info">Editar</button>
+    <button type="button" class="btn btn-info" onclick="navegacao('/edita?id=${id}'); return false">Editar</button>
     </a>`
   
     linha.innerHTML = conteudoLinha;
+    linha.appendChild(criarBotaoExcluir(id));
     return linha;
   };
 
@@ -43,20 +54,23 @@ const criaCorpoTabela = (tabela) => {
 
 
 const inicializaTabela = () => {
+
   const cabecalho = `
     <thead class="thead-dark">
       <tr>
         <th scope="col">CPF</th>
         <th scope="col">NOME</th>
         <th scope="col"></th>
-        <th scope="col"><a class="btn btn-primary" onclick="navegacao('/cadastro'); return false;">Novo Cliente</a></th>
+        <th scope="col"><a class="btn btn-primary" onclick="navegacao('/cadastro'); return false;">Novo Cliente</a>
+        </th>
       </tr>
     </thead>
     `
   const tabela = document.createElement("table");
-
   tabela.innerHTML = cabecalho;
   tabela.classList.add("table");
+
+  criaCorpoTabela(tabela);
 
   return tabela;
 }

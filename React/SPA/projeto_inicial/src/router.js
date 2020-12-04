@@ -1,10 +1,12 @@
-import inicializaTabela from "./componentes/lista/listagem-cliente";
+import inicializaTabela from "./componentes/lista/listagem-cliente.js";
+import inicializaFormEdicao from "./componentes/edita/form-edicao.js"
+import inicializaCadastro from "./componentes/cadastro/componente-cadastro.js"
 
-const { inicializaCadastro } = require("./componentes/cadastro/componente-cadastro");
 
 const rotas = {
     "/": inicializaTabela,
-    "/cadastro": inicializaCadastro
+    "/edita": inicializaFormEdicao,
+    "/cadastro": inicializaCadastro,
 
 }
 
@@ -18,5 +20,10 @@ const navegacao = pathname => {
 
     rootDiv.appendChild(iniciarRota());
 }
+window.navegacao = navegacao;
 
+window.onpopstate = () => {
+    rootDiv.innerHTML = "";
+    rootDiv.appendChild(rotas[window.location.pathname]());
+}
 export {navegacao}

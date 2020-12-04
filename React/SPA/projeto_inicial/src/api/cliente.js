@@ -56,9 +56,9 @@ const editaCliente = (id, cpf, nome) => {
 
 export {
   listarClientes,
-  cadastrarClientes,
-  detalhaCliente,
   deletaCliente,
-  editaCliente
+  detalhaCliente,
+  editaCliente,
+  cadastrarClientes
 }
 
